@@ -1,0 +1,15 @@
+services:
+  reliefhub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: reliefhub-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    volumes:
+      # Mount persistent database directory
+      - ./data:/app/data
